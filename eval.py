@@ -36,8 +36,9 @@ def syllable_analysis(lem: str) -> list[str]:
 
 def evaluate(lem: str) -> int:
     sum = 0
+    syl=syllable_analysis(lem)
     return sum+1
 
 
 if __name__ == '__main__':
-    print(syllable_analysis('muhanmap'))
+    print(evaluate('muhanmap'))
