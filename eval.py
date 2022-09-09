@@ -22,7 +22,7 @@ def evaluate(x: str) -> int:
         p[1] = p[1].group()
         x = re.sub(f'{p[1]}*', '', x, count=1)
         try:
-            p[2] = re.search(  
+            p[2] = re.search(
                 f'[^{vr+"|"+"|".join(congrlang.HEAD_ONLY)}]*' +
                 f'({"|".join(i for i in congrlang.TAIL if i)})' +
                 f'(?!{"|".join(congrlang.VOWEL)})',
