@@ -35,4 +35,4 @@ def syllable_analysis(lem: str) -> list[str]:
 
 
 if __name__ == '__main__':
-    print(syllable_analysis('muhanmap'))
+    print(syllable_analysis('hyvaa'))
