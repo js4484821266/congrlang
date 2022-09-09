@@ -41,4 +41,4 @@ def evaluate(lem: str) -> int:
 
 
 if __name__ == '__main__':
-    print(evaluate('muhanmap'))
+    print(evaluate('pungseonghan hangawi'))
