@@ -6,10 +6,6 @@ for i in TAIL:
     if i not in HEAD:
         raise ValueError
 if __name__ == '__main__':
-    s = []
-    for i in VOWEL:
-        for j in HEAD:
-            for k in TAIL:
-                s.append(j+i+k)
+    s=[h+v+t for v in VOWEL for h in HEAD for t in TAIL]
     print(s)
     print(len(s))
