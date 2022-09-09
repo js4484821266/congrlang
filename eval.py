@@ -34,5 +34,10 @@ def syllable_analysis(lem: str) -> list[str]:
     return[('' if not opn[i] else opn[i].group())+(''if not vwl[i+1]else vwl[i+1].group())+(''if not clo[i+1]else clo[i+1].group())for i in range(len(vwl)-2)]
 
 
+def evaluate(lem: str) -> int:
+    sum = 0
+    return sum+1
+
+
 if __name__ == '__main__':
     print(syllable_analysis('muhanmap'))
