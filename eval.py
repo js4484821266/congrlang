@@ -2,43 +2,37 @@ import re
 import congrlang
 
 
-def evaluate(lem: str) -> int:
-    sum = 0
-    wei = 1
-    pnm = [0, 0, 0]
-    xcl = f'[^{"".join(congrlang.HEAD+congrlang.VOWEL)}]'
-    while lem:
-        hhh = [i for i in congrlang.HEAD if i != pnm[2]]
-        vrx = f'({"|".join(congrlang.VOWEL)})'
-        hrx = f'({"|".join(hhh)})'
-        pnm[1] = re.search(vrx, lem, re.I)
-        if not pnm[1]:
-            break
-        pnm[0] = re.search(hrx, lem[:pnm[1].start()], re.I)
+def syllable_analysis(lem: str) -> list[str]:
+    vrc = re.compile(
+        f'({"|".join(sorted(congrlang.VOWEL,key=lambda x:len(x),reverse=True))})',
+        re.I)  # vowels regex compiled
+    hrc = re.compile(
+        f'({"|".join(sorted([i for i in congrlang.HEAD if i],key=lambda x:len(x),reverse=True))})',
+        re.I)  # head consonants regex compiled
+    vwl = [re.search('', '')]  # position of syllables
+    while vwl[-1]:
+        # list of match object of vowels
+        vwl.append(vrc.search(lem, vwl[-1].end()))
+    if len(vwl) <= 2:
+        return 0
+    iii = 1
+    opn = []  # opening
+    clo = []  # closing
+    while vwl[iii]:  # filtering consonants
+        hhh = [vwl[iii-1]]  # list of consonants between vowels
+        while hhh[-1]:  # push consonants
+            hhh.append(hrc.search(lem, hhh[-1].end(), vwl[iii].start()))
+        iii += 1
         try:
-            pnm[0] = pnm[0].group()
+            ttt = [i for i in hhh[1:-1] if i.group() in congrlang.TAIL]
+            clo.append(ttt[0]if hhh[-2].group() != ttt[0].group()else None)
         except:
-            pass
-        lem = lem[pnm[1].end():]
-        pnm[1] = pnm[1].group()
-        try:
-            lem = lem[re.search(xcl+f'({pnm[1]})*').end():]
-        except:
-            pass
-        try:
-            pnm[2] = re.search(
-                xcl +
-                f'({"|".join(i for i in congrlang.TAIL if i)})' +
-                f'(?!{"|".join(congrlang.VOWEL)})',
-                lem, re.I
-            )
-            lem = lem[pnm[2].end():]
-            pnm[2] = pnm[2].group()
-        except:
-            pass
-        pnm = [0, 0, 0]
-    return sum+1
+            clo.append(None)
+        opn.append(hhh[-2])
+    clo.append(re.compile(f'({"|".join(i for i in congrlang.TAIL if i)})').search(
+        lem, vwl[-2].end()))
+    return[('' if not opn[i] else opn[i].group())+(''if not vwl[i+1]else vwl[i+1].group())+(''if not clo[i+1]else clo[i+1].group())for i in range(len(vwl)-2)]
 
 
 if __name__ == '__main__':
-    print(evaluate('        m44488tchtcthccaaapaaaaiaiaiaaaaa884i   04022p'))
+    print(syllable_analysis('muhanmap'))
