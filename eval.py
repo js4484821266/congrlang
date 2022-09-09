@@ -6,6 +6,7 @@ def evaluate(x: str) -> int:
     v = 0
     w = 1
     p = [0, 0, 0]
+    xc=f'[^{"".join(set(congrlang.HEAD+congrlang.VOWEL))}]'
     while x:
         hh = [i for i in congrlang.HEAD if i and i != p[2]]
         vr = f'({"|".join(congrlang.VOWEL)})'
