@@ -2,9 +2,7 @@ import re
 import congrlang
 
 
-def evaluate(lem: str) -> int:
-    sum = 0  # sum
-    wei = 1  # weight
+def syllable_analysis(lem: str) -> list[str]:
     vrc = re.compile(
         f'({"|".join(sorted(congrlang.VOWEL,key=lambda x:len(x),reverse=True))})',
         re.I)  # vowels regex compiled
@@ -33,8 +31,8 @@ def evaluate(lem: str) -> int:
         opn.append(hhh[-2])
     clo.append(re.compile(f'({"|".join(i for i in congrlang.TAIL if i)})').search(
         lem, vwl[-2].end()))
-    return sum+1
+    return[('' if not opn[i] else opn[i].group())+(''if not vwl[i+1]else vwl[i+1].group())+(''if not clo[i+1]else clo[i+1].group())for i in range(len(vwl)-2)]
 
 
 if __name__ == '__main__':
-    print(evaluate('rarrrrrrrrarar'))
+    print(syllable_analysis('muhanmap'))
