@@ -2,41 +2,41 @@ import re
 import congrlang
 
 
-def evaluate(word: str) -> int:
+def evaluate(vrb: str) -> int:
     sum = 0
-    weight = 1
-    phonemes = [0, 0, 0]
-    excluded = f'[^{"".join(congrlang.HEAD+congrlang.VOWEL)}]'
-    while word:
-        headsnow = [i for i in congrlang.HEAD if i and i != phonemes[2]]
-        vowelregex = f'({"|".join(congrlang.VOWEL)})'
-        headregex = f'({"|".join(headsnow)})'
-        phonemes[1] = re.search(vowelregex, word, re.I)
-        if not phonemes[1]:
+    wei = 1
+    pnm = [0, 0, 0]
+    xcl = f'[^{"".join(congrlang.HEAD+congrlang.VOWEL)}]'
+    while vrb:
+        hhh = [i for i in congrlang.HEAD if i != pnm[2]]
+        vrx = f'({"|".join(congrlang.VOWEL)})'
+        hrx = f'({"|".join(hhh)})'
+        pnm[1] = re.search(vrx, vrb, re.I)
+        if not pnm[1]:
             break
-        phonemes[0] = re.search(headregex, word[:phonemes[1].start()], re.I)
+        pnm[0] = re.search(hrx, vrb[:pnm[1].start()], re.I)
         try:
-            phonemes[0] = phonemes[0].group()
+            pnm[0] = pnm[0].group()
         except:
             pass
-        word = word[phonemes[1].end():]
-        phonemes[1] = phonemes[1].group()
+        vrb = vrb[pnm[1].end():]
+        pnm[1] = pnm[1].group()
         try:
-            word = word[re.search(excluded+f'({phonemes[1]})*').end():]
+            vrb = vrb[re.search(xcl+f'({pnm[1]})*').end():]
         except:
             pass
         try:
-            phonemes[2] = re.search(
-                excluded +
+            pnm[2] = re.search(
+                xcl +
                 f'({"|".join(i for i in congrlang.TAIL if i)})' +
                 f'(?!{"|".join(congrlang.VOWEL)})',
-                word, re.I
+                vrb, re.I
             )
-            word = word[phonemes[2].end():]
-            phonemes[2] = phonemes[2].group()
+            vrb = vrb[pnm[2].end():]
+            pnm[2] = pnm[2].group()
         except:
             pass
-        phonemes = [0, 0, 0]
+        pnm = [0, 0, 0]
     return sum+1
 
 
