@@ -6,6 +6,6 @@ for i in TAIL:
     if i not in HEAD:
         raise ValueError
 if __name__ == '__main__':
-    s=[h+v+t for v in VOWEL for h in HEAD for t in TAIL]
+    s = [h+v+t for v in VOWEL for h in HEAD for t in TAIL]
     print(s)
     print(len(s))
