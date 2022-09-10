@@ -54,4 +54,4 @@ def evaluate(lem: str) -> int:
 
 
 if __name__ == '__main__':
-    print(evaluate('mandle mandle ppakppakki'))
+    print(syllable_analysis('anata no haato ni niko niko ni'))
