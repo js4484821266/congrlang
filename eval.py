@@ -50,6 +50,7 @@ def syllable_analysis(lem: str) -> list[str]:
 def evaluate(lem: str) -> int:
     sum = 0
     syl = syllable_analysis(lem)
+    # TODO
     return sum+1
 
 
