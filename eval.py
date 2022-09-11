@@ -49,10 +49,9 @@ def syllable_analysis(lem: str) -> list[str]:
 
 def evaluate(lem: str) -> int:
     sum = 0
-    syl = syllable_analysis(lem)
-    # TODO
+    syl = [i for i in syllable_analysis(lem)if () != (i[0] != i[1])]  # TODO
     return sum+1
 
 
 if __name__ == '__main__':
-    print(syllable_analysis('anata no haato ni niko niko ni'))
+    print(evaluate('anata no haato ni niko niko ni'))
