@@ -1,55 +1,64 @@
 import re
+import itertools as it
 import congrlang
 
 
-def syllable_analysis(lem: str) -> list[str]:
+def syllable_analysis(lem: str)-> "list[str]":
     vrc = re.compile(
-        f'({"|".join(sorted(congrlang.VOWEL,key=lambda x:len(x),reverse=True))})',
+        f'({"|".join(sorted(congrlang.VOWEL,key=len,reverse=True))})',
         re.I)
     # vowels regex compiled
     hrc = re.compile(
-        f'({"|".join(sorted([i for i in congrlang.HEAD if i],key=lambda x:len(x),reverse=True))})',
+        f'({"|".join(sorted([i for i in congrlang.HEAD if i],key=len,reverse=True))})',
         re.I)
     # head consonants regex compiled
-    vwl = [re.search('', '')]
-    # Match objects of syllables
-    while vwl[-1]:
-        vwl.append(vrc.search(lem, vwl[-1].end()))
-        # list of match object of vowels
-    if len(vwl) <= 2:
-        return []
-    iii = 1
+    vowel = list(vrc.finditer(lem))
+    # list of match object of vowels
+    if not vowel:
+        return [] # no vowels -> no syllables
+
     opn = []
-    # opening
+    # opening consonant
     clo = []
-    # closing
-    while vwl[iii]:
-        # filtering consonants
-        hhh = [vwl[iii-1]]
+    # closing consonant
+    for iii in range(len(vowel) + 1):
+        cons = []
         # list of consonants between vowels
-        while hhh[-1]:
-            hhh.append(hrc.search(lem, hhh[-1].end(), vwl[iii].start()))
-            # push consonants
-        iii += 1
-        try:
-            ttt = [i for i in hhh[1:-1] if i.group() in congrlang.TAIL]
-            clo.append(ttt[0]if hhh[-2].group() != ttt[0].group()else None)
-        except:
+        if iii == 0:
+            cons.extend(hrc.finditer(lem, 0, vowel[iii].start()))
+        elif iii == len(vowel):
+            cons.extend(hrc.finditer(lem, vowel[iii - 1].end(), len(lem)))
+        else:
+            cons.extend(hrc.finditer(lem, vowel[iii - 1].end(), vowel[iii].start()))
+        # push consonants
+
+        tail = list(it.takewhile(lambda x: x.group() in congrlang.TAIL, cons))
+        if len(cons) == 0:
             clo.append(None)
-        opn.append(hhh[-2])
-    clo.append(re.compile(f'({"|".join(i for i in congrlang.TAIL if i)})').search(
-        lem, vwl[-2].end()))
+            opn.append(None)
+        elif len(cons) == 1:
+            clo.append(None)
+            opn.append(cons[0])
+        elif len(cons) == 2:
+            if len(tail) >= 1:
+                clo.append(cons[0])
+                opn.append(cons[-1])
+            else:
+                raise ValueError
+        else:
+            raise ValueError
+
     syl = []
-    for i in range(len(vwl)-2):
-        syl.append((''if not opn[i] else opn[i].group()) +
-                   (''if not vwl[i+1]else vwl[i+1].group()) +
-                   (''if not clo[i+1]else clo[i+1].group()))
-    return syl
+    for i in range(len(vowel)):
+        syl.append(('' if not opn[i] else opn[i].group()) +
+                   ('' if not vowel[i] else vowel[i].group()) +
+                   ('' if not clo[i] else clo[i].group()))
+    return syl   
 
 
 def evaluate(lem: str) -> int:
     sum = 0
-    syl = [i for i in syllable_analysis(lem)if () != (i[0] != i[1])]  # TODO
+    # syl = [i for i in syllable_analysis(lem)if () != (i[0] != i[1])]  # TODO
     return sum+1
 
 
