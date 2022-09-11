@@ -9,7 +9,7 @@ def syllable_analysis(lem: str)-> "list[str]":
         re.I)
     # vowels regex compiled
     hrc = re.compile(
-        f'({"|".join(sorted(list(congrlang.HEAD - {str()}),key=len,reverse=True))})',
+        f'({"|".join(sorted([i for i in congrlang.HEAD if i],key=len,reverse=True))})',
         re.I)
     # head consonants regex compiled
     vowel = list(vrc.finditer(lem))
