@@ -3,7 +3,7 @@ import itertools as it
 import congrlang
 
 
-def syllable_analysis(lem: str) -> "list[str]":
+def syllable_analysis(lem: str)-> "list[str]":
     vrc = re.compile(
         f'({"|".join(sorted(congrlang.VOWEL,key=len,reverse=True))})',
         re.I)
@@ -15,7 +15,7 @@ def syllable_analysis(lem: str) -> "list[str]":
     vwl = list(vrc.finditer(lem))
     # list of match object of vowels
     if not vwl:
-        return []  # no vowels -> no syllables
+        return [] # no vowels -> no syllables
 
     opn = []
     # opening consonant
@@ -29,33 +29,38 @@ def syllable_analysis(lem: str) -> "list[str]":
         elif iii == len(vwl):
             cons.extend(hrc.finditer(lem, vwl[iii - 1].end(), len(lem)))
         else:
-            cons.extend(hrc.finditer(
-                lem, vwl[iii - 1].end(), vwl[iii].start()))
+            cons.extend(hrc.finditer(lem, vwl[iii - 1].end(), vwl[iii].start()))
         # push consonants
 
+        tail = list(it.takewhile(lambda x: x.group() in congrlang.TAIL, cons))
         if len(cons) == 0:
             clo.append(None)
             opn.append(None)
         elif len(cons) == 1:
             clo.append(None)
             opn.append(cons[0])
+        elif len(cons) == 2:
+            if len(tail) >= 1:
+                clo.append(cons[0])
+                opn.append(cons[-1])
+            else:
+                raise ValueError
         else:
-            clo.append(cons[0])
-            opn.append(cons[-1])
+            raise ValueError
 
     syl = []
     for i in range(len(vwl)):
         syl.append(('' if not opn[i] else opn[i].group()) +
                    ('' if not vwl[i] else vwl[i].group()) +
                    ('' if not clo[i] else clo[i].group()))
-    return syl
+    return syl   
 
 
 def evaluate(lem: str) -> int:
     sum = 0
-    syl = syllable_analysis(lem)
+    syl=syllable_analysis(lem)
     return sum+1
 
 
 if __name__ == '__main__':
-    print(evaluate('anata no haato ni niko niko ni'))
+    print(evaluate('anata no haato ni niko nimko ni'))
