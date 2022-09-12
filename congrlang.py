@@ -9,6 +9,5 @@ for i in TAIL:
 
 if __name__ == '__main__':
     s = [h+v+t for v in VOWEL for h in HEAD for t in TAIL]
-    s.sort()
     print(s)
     print(len(s))
