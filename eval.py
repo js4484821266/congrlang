@@ -39,14 +39,10 @@ def syllable_analysis(lem: str)-> "list[str]":
         elif len(cons) == 1:
             clo.append(None)
             opn.append(cons[0])
-        elif len(cons) == 2:
+        else:
             if len(tail) >= 1:
                 clo.append(cons[0])
-                opn.append(cons[-1])
-            else:
-                raise ValueError
-        else:
-            raise ValueError
+            opn.append(cons[-1])
 
     syl = []
     for i in range(len(vowel)):
@@ -58,6 +54,7 @@ def syllable_analysis(lem: str)-> "list[str]":
 
 def evaluate(lem: str) -> int:
     sum = 0
+    syl=syllable_analysis(lem)
     return sum+1
 
 
