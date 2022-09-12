@@ -58,7 +58,6 @@ def syllable_analysis(lem: str)-> "list[str]":
 
 def evaluate(lem: str) -> int:
     sum = 0
-    # syl = [i for i in syllable_analysis(lem)if () != (i[0] != i[1])]  # TODO
     return sum+1
 
 
