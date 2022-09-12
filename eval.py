@@ -59,4 +59,4 @@ def evaluate(lem: str) -> int:
 
 
 if __name__ == '__main__':
-    print(evaluate('anata no haato ni niko niko ni'))
+    print(evaluate('aioaioaioppppppppoppop'))
