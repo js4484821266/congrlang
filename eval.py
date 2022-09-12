@@ -1,5 +1,6 @@
-import re
 import itertools as it
+import re
+
 import congrlang
 
 
@@ -37,6 +38,7 @@ def syllable_analysis(lem: str) -> "list[str]":
         clo.append(None if len(cons) <= 1 or len(tail) == 0 else cons[0])
         opn.append(None if not len(cons) else cons[-1])
 
+    clo = clo[1:]
     syl = []
     for i in range(len(vwl)):
         syl.append(('' if not opn[i] else opn[i].group()) +
@@ -48,8 +50,11 @@ def syllable_analysis(lem: str) -> "list[str]":
 def evaluate(lem: str) -> int:
     sum = 0
     syl = syllable_analysis(lem)
+    # TODO
     return sum+1
 
 
 if __name__ == '__main__':
-    print(evaluate('panata no haato ni niko nimko ni'))
+    lem = 'pannamaa'
+    print(syllable_analysis(lem))
+    # print(evaluate(lem))
