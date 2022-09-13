@@ -17,6 +17,11 @@ def syllable_analysis(lem: str) -> "list[str]":
     # list of match object of vowels
     if not vwl:
         return []  # no vowels -> no syllables
+    for i in range(1,len(vwl)):
+        try:
+            pass
+        except:
+            pass
 
     opn = []
     # opening consonant
@@ -44,6 +49,7 @@ def syllable_analysis(lem: str) -> "list[str]":
         syl.append(('' if not opn[i] else opn[i].group()) +
                    ('' if not vwl[i] else vwl[i].group()) +
                    ('' if not clo[i] else clo[i].group()))
+    
     return syl
 
 
@@ -55,6 +61,6 @@ def evaluate(lem: str) -> int:
 
 
 if __name__ == '__main__':
-    lem = 'pannamaa'
+    lem = 'pannamaan'
     print(syllable_analysis(lem))
     # print(evaluate(lem))
