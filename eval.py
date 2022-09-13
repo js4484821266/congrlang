@@ -1,5 +1,6 @@
-import re
 import itertools as it
+import re
+
 import congrlang
 
 
@@ -28,28 +29,37 @@ def syllable_analysis(lem: str) -> "list[str]":
             cons.extend(hrc.finditer(lem, 0, vwl[iii].start()))
         elif iii == len(vwl):
             cons.extend(hrc.finditer(lem, vwl[iii - 1].end(), len(lem)))
+            tail = list(it.takewhile(
+                lambda x: x.group() in congrlang.TAIL, cons))
+            clo.append(None if not len(tail)else tail[0])
+            break
         else:
             cons.extend(hrc.finditer(
                 lem, vwl[iii - 1].end(), vwl[iii].start()))
         # push consonants
 
         tail = list(it.takewhile(lambda x: x.group() in congrlang.TAIL, cons))
-        clo.append(None if len(cons) <= 1 or len(tail) == 0 else cons[0])
-        opn.append(None if not len(cons) else cons[-1])
+        clo.append(None if len(cons) <= 1 or not len(tail) else cons[0])
+        opn.append(None if not len(cons)else cons[-1])
 
+    del clo[0]
     syl = []
     for i in range(len(vwl)):
         syl.append(('' if not opn[i] else opn[i].group()) +
                    ('' if not vwl[i] else vwl[i].group()) +
                    ('' if not clo[i] else clo[i].group()))
+    # TODO
     return syl
 
 
 def evaluate(lem: str) -> int:
     sum = 0
     syl = syllable_analysis(lem)
+    # TODO
     return sum+1
 
 
 if __name__ == '__main__':
-    print(evaluate('panata no haato ni niko nimko ni'))
+    lem = 'pannamaan'
+    print(syllable_analysis(lem))
+    # print(evaluate(lem))
