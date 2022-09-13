@@ -48,7 +48,7 @@ def syllable_analysis(lem: str) -> "list[str]":
             else:
                 raise ValueError
 
-    clo = clo[1:]
+    del clo[0]
     syl = []
     for i in range(len(vwl)):
         syl.append(('' if not opn[i] else opn[i].group()) +
