@@ -17,11 +17,6 @@ def syllable_analysis(lem: str) -> "list[str]":
     # list of match object of vowels
     if not vwl:
         return []  # no vowels -> no syllables
-    for i in range(1,len(vwl)):
-        try:
-            pass
-        except:
-            pass
 
     opn = []
     # opening consonant
@@ -40,8 +35,18 @@ def syllable_analysis(lem: str) -> "list[str]":
         # push consonants
 
         tail = list(it.takewhile(lambda x: x.group() in congrlang.TAIL, cons))
-        clo.append(None if len(cons) <= 1 or len(tail) == 0 else cons[0])
-        opn.append(None if not len(cons) else cons[-1])
+        if len(cons) == 0:
+            clo.append(None)
+            opn.append(None)
+        elif len(cons) == 1:
+            clo.append(None)
+            opn.append(cons[0])
+        else:
+            if len(tail):
+                clo.append(cons[0])
+                opn.append(cons[-1])
+            else:
+                raise ValueError
 
     clo = clo[1:]
     syl = []
@@ -49,7 +54,7 @@ def syllable_analysis(lem: str) -> "list[str]":
         syl.append(('' if not opn[i] else opn[i].group()) +
                    ('' if not vwl[i] else vwl[i].group()) +
                    ('' if not clo[i] else clo[i].group()))
-    
+
     return syl
 
 
