@@ -29,24 +29,18 @@ def syllable_analysis(lem: str) -> "list[str]":
             cons.extend(hrc.finditer(lem, 0, vwl[iii].start()))
         elif iii == len(vwl):
             cons.extend(hrc.finditer(lem, vwl[iii - 1].end(), len(lem)))
+            tail = list(it.takewhile(
+                lambda x: x.group() in congrlang.TAIL, cons))
+            clo.append(None if not len(tail)else tail[0])
+            break
         else:
             cons.extend(hrc.finditer(
                 lem, vwl[iii - 1].end(), vwl[iii].start()))
         # push consonants
 
         tail = list(it.takewhile(lambda x: x.group() in congrlang.TAIL, cons))
-        if len(cons) == 0:
-            clo.append(None)
-            opn.append(None)
-        elif len(cons) == 1:
-            clo.append(None)
-            opn.append(cons[0])
-        else:
-            if len(tail):
-                clo.append(cons[0])
-                opn.append(cons[-1])
-            else:
-                raise ValueError
+        clo.append(None if len(cons) <= 1 or not len(tail) else cons[0])
+        opn.append(None if not len(cons)else cons[-1])
 
     del clo[0]
     syl = []
@@ -54,7 +48,7 @@ def syllable_analysis(lem: str) -> "list[str]":
         syl.append(('' if not opn[i] else opn[i].group()) +
                    ('' if not vwl[i] else vwl[i].group()) +
                    ('' if not clo[i] else clo[i].group()))
-
+    # TODO
     return syl
 
 
