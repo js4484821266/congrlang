@@ -1,18 +1,19 @@
 '''
 primes
 '''
-p = [2, 3, 5, 7]
+p = []
 if __name__ == '__main__':
-    with open('primes.txt', 'a+', encoding='646') as f:
-        p=list(map(int,f.read().split('\n')))
+    with open('primes.txt', 'r', encoding='646') as f:
+        p = sorted(list(map(int, f.read().split(','))))
+    with open('primes.txt', 'w', encoding='646') as f:
         i = p[-1]+2
-        while i < 1000000:
+        while i < 200000:
             for j in p+[0]:
                 if j > 1 and not (i % j):
                     break
                 elif not j:
                     p.append(i)
-                    print(i)
                 else:
                     pass
             i += 2
+        f.write(','.join(map(str, p)))
