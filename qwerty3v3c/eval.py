@@ -4,8 +4,8 @@ import cngr as C
 
 def eval(word: str) -> int:
     y = 0
-    w=re.findall(
-        '['+''.join(C.C+C.V)+']?',
+    w = re.findall(
+        '['+''.join(C.C+C.V)+']',
         word,
         re.I
     )
