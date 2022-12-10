@@ -1,5 +1,5 @@
 # congrlang
-Congruence Language (or "CongrLang" for short) is a constructed language where all words, and inflections are natural numbers and the morphology is based on modulo arithmetic.
+Congruence Language (or "CongrLang" for short) is a constructed language where all words, and inflections are natural numbers and the morphology is based on modulo arithmetic. The inflections are rendered as sequences of readable syllables by versions.
 ## Conception
 This constructed language is based on the idea of a language where the morphology is so complex that it is considered completely irregular.
 ## Morphology
