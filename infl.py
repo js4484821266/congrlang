@@ -9,8 +9,8 @@ class Infl:
     '''
 
     def __init__(self,
-                 prim=1,
-                 infl=1
+                 prim: int,
+                 infl: int
                  ) -> None:
         '''
         Initializes fields.
@@ -21,8 +21,8 @@ class Infl:
         self.infl = infl
 
     def set(self,
-            prim=1,
-            infl=1
+            prim: int,
+            infl: int
             ) -> None:
         '''
         Initializes fields.
@@ -33,13 +33,34 @@ class Infl:
         self.infl = infl
 
 
-class Sntx:
+class Sntn:
     '''
     Defines an object of a sentence.
     '''
 
-    def __init__(self) -> None:
-        pass
+    def __init__(self,
+                 abso: int,
+                 verb: int
+                 ) -> None:
+        '''
+        Initializes fields.
+        `abso`: The noun in the absolutive case.
+        `verb`: The verb.
+        '''
+        self.abso = abso
+        self.verb = verb
+
+    def set(self,
+            abso: int,
+            verb: int
+            ) -> None:
+        '''
+        Initializes fields.
+        `abso`: The noun in the absolutive case.
+        `verb`: The verb.
+        '''
+        self.abso = abso
+        self.verb = verb
 
 
 if __name__ == '__main__':
