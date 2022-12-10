@@ -1,7 +1,18 @@
 import re
 import cngr as C
-def eval(word:str):#->int:
-    w=re.sub('[^'+''.join(C.V+C.C)+']*','',word)
+
+
+def eval(word: str) -> int:
+    y = 0
+    w=re.findall(
+        '['+''.join(C.C+C.V)+']?',
+        word,
+        re.I
+    )
     
-if __name__=='__main__':
+    # TODO
+    return y
+
+
+if __name__ == '__main__':
     print(eval('cdsfcsdfscf22222cdfqqq'))
