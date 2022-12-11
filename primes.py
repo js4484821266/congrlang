@@ -6,10 +6,8 @@ p = []
 if __name__ == '__main__':
     with open('primes.txt', 'r', encoding='646') as f:
         p = sorted(list(map(int, f.read().split(','))))
-    r=int(math.log(p[-1],1.001))
     with open('primes.txt', 'w', encoding='646') as f:
         i = p[-1]+2
-        print(r)
         try:
             while True:
                 for j in p+[0]:
@@ -19,10 +17,8 @@ if __name__ == '__main__':
                         p.append(i)
                     else:
                         pass
-                l=int(math.log(i,1.001))
-                if l!=r:
-                    r=l
-                    print(r)
+                if not i%1000:
+                    print(i)
                 i += 2
         except KeyboardInterrupt:
             print(p[-1])
