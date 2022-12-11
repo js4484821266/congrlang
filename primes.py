@@ -17,7 +17,7 @@ if __name__ == '__main__':
                         p.append(i)
                     else:
                         pass
-                if not i%1000:
+                if not i % 1000:
                     print(i)
                 i += 2
         except KeyboardInterrupt:
