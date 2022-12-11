@@ -53,7 +53,7 @@ class Sntn:
     def __init__(self,
                  subj: int,
                  verb: int,
-                 advb: dict[int, int]
+                 advb: dict[int, Infl]
                  ) -> None:
         '''
         Initializes fields.
@@ -68,7 +68,7 @@ class Sntn:
     def set(self,
             subj: int,
             verb: int,
-            advb: dict[int, int]
+            advb: dict[int, Infl]
             ) -> None:
         '''
         Initializes fields.
@@ -79,7 +79,8 @@ class Sntn:
         self.subj = subj
         self.verb = verb
         self.advb = advb
-    def out(self)->int:
+
+    def out(self) -> int:
         '''
         Returns the sentence.
         '''
