@@ -3,89 +3,36 @@ Universal inflector source code for every version of Congrlang.
 '''
 
 
-class Infl:
+class Phrs:
     '''
-    Defines an object of an inflection.
-    '''
-
-    def __init__(self,
-                 prim: int,
-                 infl: int,
-                 nnnn: int
-                 ) -> None:
-        '''
-        Initializes fields.
-        `prim`: Primitive form of the word.
-        `infl`: Serial number of the inflection.
-        `nnnn`: Divisor of the modulo operation.
-        '''
-        self.prim = prim
-        self.infl = infl
-        self.nnnn = nnnn
-
-    def set(self,
-            prim: int,
-            infl: int,
-            nnnn: int
-            ) -> None:
-        '''
-        Initializes fields.
-        `prim`: Primitive form of the word.
-        `infl`: Serial number of the inflection.
-        `nnnn`: Divisor of the modulo operation.
-        '''
-        self.prim = prim
-        self.infl = infl
-        self.nnnn = nnnn
-
-    def out(self) -> int:
-        '''
-        Returns the inflection.
-        '''
-        return self.prim**self.infl % self.nnnn
-
-
-class Sntn:
-    '''
-    Defines an object of a sentence.
+    Defines an object of a phrase.
     '''
 
-    def __init__(self,
-                 subj: int,
-                 verb: int,
-                 advb: list[Infl]
-                 ) -> None:
-        '''
-        Initializes fields.
-        `subj`: The subject.
-        `verb`: The verb.
-        `advb`: The adverbial phrases.
-        '''
-        self.subj = subj
-        self.verb = verb
-        self.advb = advb
+    def __init__(self) -> None:
+        pass
 
-    def set(self,
-            subj: int,
-            verb: int,
-            advb: list[Infl]
-            ) -> None:
-        '''
-        Initializes fields.
-        `subj`: The subject.
-        `verb`: The verb.
-        `advb`: The adverbial phrases.
-        '''
-        self.subj = subj
-        self.verb = verb
-        self.advb = advb
 
-    def out(self) -> int:
-        '''
-        Returns the sentence.
-        '''
-        with open('primes.txt','r',encoding='646')as ptxt:
-            pppp=list(map(int,ptxt.read().split()))
-            # TODO
+def infl(prim: int, snum: int, nnnn: int) -> int:
+    '''
+    Initializes fields.
+    `prim`: Primitive form of the word.
+    `snum`: Serial number of the inflection.
+    `nnnn`: Divisor of the modulo operation.
+    '''
+    return prim**snum % nnnn
+
+
+def sntn(subj: int, prdc: int, advb: dict[int, int]) -> int:
+    '''
+    Initializes fields.
+    `subj`: The subject.
+    `prdc`: The predicate.
+    `advb`: The adverbial phrases.
+    '''
+    pppp = []
+    with open('primes.txt', 'r', encoding='646')as ptxt:
+        pppp = list(map(int, ptxt.read().split()))
+
+    # TODO
 if __name__ == '__main__':
     pass
