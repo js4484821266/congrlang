@@ -53,7 +53,7 @@ class Sntn:
     def __init__(self,
                  subj: int,
                  verb: int,
-                 advb: dict[int, Infl]
+                 advb: list[Infl]
                  ) -> None:
         '''
         Initializes fields.
@@ -68,7 +68,7 @@ class Sntn:
     def set(self,
             subj: int,
             verb: int,
-            advb: dict[int, Infl]
+            advb: list[Infl]
             ) -> None:
         '''
         Initializes fields.
@@ -84,6 +84,7 @@ class Sntn:
         '''
         Returns the sentence.
         '''
+        # TODO
 
 
 if __name__ == '__main__':
