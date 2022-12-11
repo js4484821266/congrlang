@@ -5,7 +5,7 @@ import time
 p = []
 if __name__ == '__main__':
     with open('primes.txt', 'r', encoding='646') as f:
-        p = sorted(list(map(int, f.read().split(','))))
+        p = sorted(list(map(int, f.read().split())))
     with open('primes.txt', 'w', encoding='646') as f:
         i = p[-1]
         print(i)
@@ -26,4 +26,4 @@ if __name__ == '__main__':
                     t000=t001
         except KeyboardInterrupt:
             print(p[-1])
-        f.write(','.join(map(str, p)))
+        f.write(' '.join(map(str, p)))

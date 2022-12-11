@@ -84,8 +84,8 @@ class Sntn:
         '''
         Returns the sentence.
         '''
-        # TODO
-
-
+        with open('primes.txt','r',encoding='646')as ptxt:
+            pppp=list(map(int,ptxt.read().split()))
+            # TODO
 if __name__ == '__main__':
     pass
