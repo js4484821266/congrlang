@@ -79,6 +79,10 @@ class Sntn:
         self.subj = subj
         self.verb = verb
         self.advb = advb
+    def out(self)->int:
+        '''
+        Returns the sentence.
+        '''
 
 
 if __name__ == '__main__':
