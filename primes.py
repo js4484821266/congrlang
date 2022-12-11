@@ -1,7 +1,6 @@
 '''
 primes
 '''
-import math
 p = []
 if __name__ == '__main__':
     with open('primes.txt', 'r', encoding='646') as f:
