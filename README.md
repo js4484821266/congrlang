@@ -9,7 +9,7 @@ m=a**b%p
 ```
 where
 * `m` is the inflection of the word `a`, the primitive state.
-* `b` denotes which inflection the word has.
+* `b` denotes the inflection the word has.
 * `p` represents the designated substantial prime number.
 ## Syntax
 The syntax implements the Chinese Remainder Theorem.
