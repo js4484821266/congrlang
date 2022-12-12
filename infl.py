@@ -11,3 +11,7 @@ def infl(prim: int, snum: int, nnnn: int) -> int:
     `nnnn`: Divisor of the modulo operation.
     '''
     return prim**snum % nnnn
+
+
+if __name__ == '__main__':
+    print(infl(7, 7, 101))
