@@ -19,7 +19,7 @@ def infl(prim: int, snum: int) -> int:
 
 
 if __name__ == '__main__':
-    a = 6
+    a = 4
     b = 1
     m = set()
     l=0
