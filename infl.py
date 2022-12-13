@@ -1,7 +1,7 @@
 '''
 Generator for the inflections.
 '''
-
+import sys
 NNNN = 2147483647
 
 
@@ -19,15 +19,15 @@ def infl(prim: int, snum: int) -> int:
 
 
 if __name__ == '__main__':
-    a = 4
+    a = int(sys.argv[1])
     b = 1
     m = set()
-    l=0
+    l = 0
     while True:
         n = infl(a, b)
         print(f'{b}: {n}')
-        b+=1
-        l=len(m)
+        b += 1
+        l = len(m)
         m.add(n)
-        if l==len(m):
+        if l == len(m):
             break
