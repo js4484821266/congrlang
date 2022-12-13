@@ -2,19 +2,22 @@
 Generator for the inflections.
 '''
 import sys
-NNNN = 2147483647
-
+NNNN = 1073741827
+PRMX=2**20
+SNMX=NNNN//PRMX
 
 def infl(prim: int, snum: int) -> int:
     '''
     Initializes fields.
-    `1 < prim < 2**20`: Primitive form of the word.
-    `0 < snum < 2**11`: Serial number of the inflection.
+    `1 < prim < PRMX`: Primitive form of the word.
+    `0 < snum < SNMX`: Serial number of the inflection.
     '''
-    if 1 >= prim or prim >= 2**20:
-        raise ValueError("1 < prim < 2**20")
-    if 0 >= snum or snum >= 2**11:
-        raise ValueError("0 < prim < 2**11")
+    if 1 >= prim or prim >= PRMX:
+        eeee=f'1 < prim < {PRMX}'
+        raise ValueError(eeee)
+    if 0 >= snum or snum >= NNNN/PRMX:
+        eeee=f'0 < snum < {SNMX}'
+        raise ValueError(eeee)
     return prim**snum % NNNN
 
 
