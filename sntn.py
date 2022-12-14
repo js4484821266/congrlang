@@ -2,7 +2,7 @@
 Universal inflector source code for every version of Congrlang.
 '''
 import infl
-
+import primes
 
 def sntn(subj: int, prdc: int, advb: dict[int, int]=dict()) -> int:
     '''
@@ -11,9 +11,7 @@ def sntn(subj: int, prdc: int, advb: dict[int, int]=dict()) -> int:
     `prdc`: The predicate.
     `advb`: The adverbial phrases.
     '''
-    pppp = []
-    with open('primes.txt', 'r', encoding='646')as ptxt:
-        pppp = list(map(int, ptxt.read().split()))
+    # TODO
     return 0
 
 
