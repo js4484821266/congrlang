@@ -1,5 +1,5 @@
 '''
-Generator for the inflections.
+Generator of the inflections.
 '''
 import sys
 NNNN = 1073741827
