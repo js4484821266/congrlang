@@ -3,8 +3,9 @@ Generator for the inflections.
 '''
 import sys
 NNNN = 1073741827
-PRMX=2**20
-SNMX=NNNN//PRMX
+PRMX = 2**20
+SNMX = NNNN/PRMX
+
 
 def infl(prim: int, snum: int) -> int:
     '''
@@ -13,11 +14,9 @@ def infl(prim: int, snum: int) -> int:
     `0 < snum < SNMX`: Serial number of the inflection.
     '''
     if 1 >= prim or prim >= PRMX:
-        eeee=f'1 < prim < {PRMX}'
-        raise ValueError(eeee)
-    if 0 >= snum or snum >= NNNN/PRMX:
-        eeee=f'0 < snum < {SNMX}'
-        raise ValueError(eeee)
+        raise ValueError(f'supposed to be 1 < prim < {PRMX}')
+    if 0 >= snum or snum >= SNMX:
+        raise ValueError(f'supposed to be 0 < snum < {SNMX}')
     return prim**snum % NNNN
 
 
