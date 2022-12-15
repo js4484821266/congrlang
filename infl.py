@@ -1,5 +1,21 @@
 '''
 Generator of the inflections.
+
+Suppose there is a congruence equation:
+`m=a**b%N`
+where
+- `m` is the inflection,
+- `a` is the primitive form of the word,
+- `b` is the serial number of the inflection, and
+- `N` is the divisor, the constant.
+
+Constants:
+- `NNNN`: `N` of the equation above.
+- `PRMX`: maximum of the primitive form of the words.
+- `SNMX`: maximum of the serial number of the inflections.
+
+Functions:
+- `infl(prim:int,snum:int)->int`: returns the inflection, `prim**snum%NNNN`
 '''
 import sys
 NNNN = 1073741827
