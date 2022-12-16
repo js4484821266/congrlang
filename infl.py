@@ -18,7 +18,7 @@ import primes
 
 def prch(nnnn: int) -> bool:
     '''
-    Checks if a number is a prime.
+    Checks if a number is a registered prime.
     '''
     return nnnn in primes.p
 
