@@ -11,6 +11,7 @@ where
 
 Functions:
 - `infl(prim:int,snum:int)->int`: returns the inflection, `prim**snum%NNNN`
+- `prch(nnnn:int)->bool`: checks if a number is a registered prime.
 '''
 import sys
 import primes
