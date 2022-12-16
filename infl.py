@@ -9,15 +9,11 @@ where
 - `b` is the serial number of the inflection, and
 - `N` is the divisor, the constant.
 
-Constants:
-- `NNNN`: `N` of the equation above.
-- `PRMX`: maximum of the primitive form of the words.
-- `SNMX`: maximum of the serial number of the inflections.
-
 Functions:
 - `infl(prim:int,snum:int)->int`: returns the inflection, `prim**snum%NNNN`
 '''
 import sys
+import primes
 
 
 def infl(prim: int, snum: int, nnnn: int) -> int:
