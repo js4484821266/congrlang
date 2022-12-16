@@ -16,6 +16,13 @@ import sys
 import primes
 
 
+def prch(nnnn: int) -> bool:
+    '''
+    Checks if a number is a prime.
+    '''
+    return nnnn in primes.p
+
+
 def infl(prim: int, snum: int, nnnn: int) -> int:
     '''
     Initializes fields.
