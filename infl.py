@@ -15,6 +15,7 @@ Functions:
 '''
 import sys
 import primes
+NNNN = 32771
 
 
 def prch(nnnn: int) -> bool:
@@ -24,7 +25,7 @@ def prch(nnnn: int) -> bool:
     return nnnn in primes.p
 
 
-def infl(prim: int, snum: int, nnnn: int) -> int:
+def infl(prim: int, snum: int, nnnn: int = NNNN) -> int:
     '''
     Initializes fields.
     `1 < prim`: Primitive form of the word.
@@ -34,15 +35,13 @@ def infl(prim: int, snum: int, nnnn: int) -> int:
 
 
 if __name__ == '__main__':
-    a = int(sys.argv[1])
-    b = 1
-    m = set()
-    l = 0
-    while True:
-        n = infl(a, b, 1073741827)
-        print(f'{b}: {n}')
-        b += 1
-        l = len(m)
-        m.add(n)
-        if l == len(m):
-            break
+    for a in range(2, NNNN):
+        m = set()
+        l = 0
+        for b in range(1, NNNN):
+            n = infl(a, b, NNNN)
+            m.add(n)
+            l += 1
+            if l != len(m):
+                print(f'{a}**{b}: {n}')
+                break
