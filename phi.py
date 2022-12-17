@@ -25,7 +25,8 @@ if __name__ == '__main__':
                         break
                 u = 1
                 for pj, tj in zip(primes.p, t):
-                    u *= q[pj**tj]
+                    v = pj**tj
+                    u *= v-v//pj
                 q.append(u)
                 t1 = time.time()
                 if t1-t0 >= 1:
