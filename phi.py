@@ -1,7 +1,6 @@
 '''
 Euler's totient function.
 '''
-import math
 import time
 import primes
 
@@ -9,7 +8,6 @@ q = []
 with open('phi.txt', 'r', encoding='646') as f:
     q = list(map(int, f.read().split()))
 if __name__ == '__main__':
-    mlb = math.log(1.01)
     with open('phi.txt', 'w', encoding='646') as f:
         i = len(q)
         print(i)
@@ -19,12 +17,12 @@ if __name__ == '__main__':
                 t = []
                 k = i
                 for j in primes.p:
-                    if j*j > i:
-                        break
                     t.append(0)
-                    while k > 1 and not k % j:
+                    while not k % j:
                         t[-1] += 1
                         k //= j
+                    if k == 1:
+                        break
                 u = 1
                 for pj, tj in zip(primes.p, t):
                     v = pj**tj
