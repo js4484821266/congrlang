@@ -1,11 +1,13 @@
 '''
 primes
 '''
+import math
 import time
 p = []
 with open('primes.txt', 'r', encoding='646') as f:
     p = sorted(list(map(int, f.read().split())))
 if __name__ == '__main__':
+    ml1d=math.log(1.1)
     with open('primes.txt', 'w', encoding='646') as f:
         i = p[-1]
         print(i)
@@ -20,9 +22,9 @@ if __name__ == '__main__':
                         p.append(i)
                     else:
                         pass
-                if i % 1000 == 1:
+                if int(math.log(i)/ml1d)>int(math.log(i-1)/ml1d):
                     t001 = time.time()
-                    print(f'{i}: {t001-t000}s')
+                    print(f'{i}: {int((t001-t000)*1000)}ms')
                     t000 = t001
         except KeyboardInterrupt:
             print(p[-1])
