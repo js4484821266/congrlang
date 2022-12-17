@@ -8,7 +8,7 @@ q = []
 with open('phi.txt', 'r', encoding='646') as f:
     q = list(map(int, f.read().split()))
 if __name__ == '__main__':
-    with open('phi.txt', 'w', encoding='646') as f:
+    with open('phi.txt', 'a', encoding='646') as f:
         i = len(q)
         print(i)
         t0 = time.time()
@@ -27,7 +27,7 @@ if __name__ == '__main__':
                 for pj, tj in zip(primes.p, t):
                     v = pj**tj
                     u *= v-v//pj
-                q.append(u)
+                f.write(f'\n{u}')
                 t1 = time.time()
                 if t1-t0 >= 1:
                     print(i)
@@ -35,4 +35,3 @@ if __name__ == '__main__':
                 i += 1
         except KeyboardInterrupt:
             print(i)
-        f.write('\n'.join(map(str, q)))
