@@ -26,4 +26,4 @@ if __name__ == '__main__':
                     t0 = t1
         except KeyboardInterrupt:
             print(p[-1])
-        f.write(' '.join(map(str, p)))
+        f.write('\n'.join(map(str, p)))
