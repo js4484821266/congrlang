@@ -4,7 +4,10 @@ Universal inflector source code for every version of Congrlang.
 import infl
 import primes
 
-def sntn(subj: int, prdc: int, advb: dict[int, int]=dict()) -> int:
+
+def sntn(subj: int,
+         prdc: int,
+         advb: dict[int, int] = dict()) -> int:
     '''
     Initializes fields.
     `subj`: The subject.
