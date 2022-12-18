@@ -1,5 +1,5 @@
 '''
-helps designate N.
+Designates N.
 '''
 import primes
 import phi
