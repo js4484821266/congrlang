@@ -10,35 +10,26 @@ where
 - `N` is the divisor, the constant.
 
 Functions:
-- `infl(prim:int,snum:int)->int`: returns the inflection, `prim**snum%NNNN`
-- `prch(nnnn:int)->bool`: checks if a number is a registered prime.
+- `infl(prim:int,snum:int)->int`:
+  returns the inflection, `prim**snum%NNNN`
 '''
-import primes
-NNNN = 32771
+import nnnn
 
-
-def prch(nnnn: int) -> bool:
-    '''
-    Checks if a number is a registered prime.
-    '''
-    return nnnn in primes.p
-
-
-def infl(prim: int, snum: int, nnnn: int = NNNN) -> int:
+def infl(prim: int, snum: int, modn: int = nnnn.N) -> int:
     '''
     Initializes fields.
     `1 < prim`: Primitive form of the word.
     `0 < snum`: Serial number of the inflection.
     '''
-    return prim**snum % nnnn
+    return prim**snum % modn
 
 
 if __name__ == '__main__':
-    for a in range(2, NNNN):
+    for a in range(2, nnnn.N):
         m = set()
         l = 0
-        for b in range(1, NNNN):
-            n = infl(a, b, NNNN)
+        for b in range(1, nnnn.N):
+            n = infl(a, b, nnnn.N)
             m.add(n)
             l += 1
             if l != len(m):
