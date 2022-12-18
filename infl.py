@@ -15,6 +15,7 @@ Functions:
 '''
 import nnnn
 
+
 def infl(prim: int, snum: int, modn: int = nnnn.N) -> int:
     '''
     Initializes fields.
