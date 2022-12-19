@@ -37,6 +37,7 @@ if __name__ == '__main__':
             print(p[-1])
             t0 = t1
     except KeyboardInterrupt:
-        print(p[-1])
+        pass
+    print(p[-1])
     with open('primes.txt', 'w', encoding='646') as w:
         w.write('\n'.join(map(str, sorted(set(p)))))
