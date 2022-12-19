@@ -30,7 +30,6 @@ if __name__ == '__main__':
     print(p[-1])
     t0 = time.time()
     try:
-        # while True:
         nxpr()
         t1 = time.time()
         if t1-t0 >= 1:
