@@ -35,6 +35,8 @@ if __name__ == '__main__':
     print(p[-1])
     import threading
     thrs = list()
+    import time
+    t0=time.time()
     try:
         for i in range(10):
             t=threading.Thread(target=papp)
@@ -42,7 +44,12 @@ if __name__ == '__main__':
             thrs.append(t)
         while True:
             for t in thrs:
-                t.join()
+                t1=time.time()
+                if t.is_alive():
+                    continue
+                else:
+                    t.join()
+                # TODO
                 t=threading.Thread(target=papp)
                 t.start()
     except KeyboardInterrupt:
