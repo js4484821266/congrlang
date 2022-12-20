@@ -33,11 +33,13 @@ def papp() -> None:
 
 if __name__ == '__main__':
     print(p[-1])
+    import time
     import threading
     thrs = list()
+    t0=time.time()
     try:
-        for i in range(4):
-            t = threading.Thread(target=papp, daemon=True)
+        for i in range(10):
+            t = threading.Thread(target=papp)
             t.start()
             thrs.append(t)
         while True:
@@ -45,7 +47,10 @@ if __name__ == '__main__':
                 if t.is_alive():
                     continue
                 t.join()
-                print(f'Thr {t.ident}: {p[-1]}')
+                # print(f'Thr {t.ident}: {p[-1]}')
+                if time.time()-t0>=1:
+                    print(p[-1])
+                    t0=time.time()
                 t = threading.Thread(target=papp)
                 t.start()
     except KeyboardInterrupt:
