@@ -14,15 +14,11 @@ def nxpr(inon: int = p[-1]):
     '''
     while True:
         inon += 2
-        dlep=0
         for jjjj in p+[0]:
             if jjjj > 1 and not inon % jjjj:
                 break
             if not jjjj:
-                p.append(inon)
-                dlep=1
-        if dlep:
-            break
+                return inon
         
 
 
@@ -30,7 +26,7 @@ if __name__ == '__main__':
     print(p[-1])
     t0 = time.time()
     try:
-        nxpr()
+        p.append(nxpr())
         t1 = time.time()
         if t1-t0 >= 1:
             print(p[-1])
