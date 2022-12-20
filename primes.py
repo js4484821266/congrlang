@@ -10,15 +10,13 @@ def nxpr():
     '''
     the next prime?
     '''
+    inon = p[-1]
     while True:
-        inon = p[-1]
         inon += 2
-        for jjjj in p+[0]:
-            if jjjj**2 > inon:
+        for jjjj in p:
+            if not inon % jjjj:
                 break
-            if jjjj > 1 and not inon % jjjj:
-                break
-            if not jjjj:
+            if jjjj*jjjj > inon:
                 return inon
 
 
@@ -36,25 +34,26 @@ def papp() -> None:
 if __name__ == '__main__':
     print(p[-1])
     import threading
-    nthr = 8
     thrs = list()
     try:
-        for i in range(nthr):
+        for i in range(4):
             t = threading.Thread(target=papp, daemon=True)
             t.start()
             thrs.append(t)
         while True:
-            for t in range(nthr):
-                if thrs[t].is_alive():
+            for t in thrs:
+                if t.is_alive():
                     continue
-                thrs[t].join()
-                print(f'Thread {t}... {p[-1]}')
-                thrs[t] = threading.Thread(target=papp)
-                thrs[t].start()
+                t.join()
+                print(f'Thr {t.ident}: {p[-1]}')
+                t = threading.Thread(target=papp)
+                t.start()
     except KeyboardInterrupt:
         print("KeyboardInterrupt")
         for t in thrs:
+            print(f'Thr {t.ident} ', end='')
             t.join()
+            print('disconnected.')
     P = sorted(set(p))
     print(P[-1])
     with open('primes.txt', 'w', encoding='646') as w:
