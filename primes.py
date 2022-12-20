@@ -1,7 +1,6 @@
 '''
 primes
 '''
-import time
 p = []
 with open('primes.txt', 'r', encoding='646') as r:
     p = list(map(int, r.read().split()))
@@ -19,20 +18,37 @@ def nxpr(inon: int = p[-1]):
                 break
             if not jjjj:
                 return inon
-        
+
+
+def papp(inon: int = p[-1])->None:
+    '''
+    appends nxpr to p.
+    '''
+    prim = nxpr(inon)
+    if prim in p:
+        return
+    else:
+        p.append(prim)
 
 
 if __name__ == '__main__':
     print(p[-1])
-    t0 = time.time()
+    import threading
+    thrs = list()
     try:
-        p.append(nxpr())
-        t1 = time.time()
-        if t1-t0 >= 1:
-            print(p[-1])
-            t0 = t1
+        for i in range(10):
+            t=threading.Thread(target=papp)
+            t.start()
+            thrs.append(t)
+        while True:
+            for t in thrs:
+                t.join()
+                t=threading.Thread(target=papp)
+                t.start()
     except KeyboardInterrupt:
-        pass
-    print(p[-1])
+        for t in thrs:
+            t.join()
+    P=sorted(set(p))
+    print(P[-1])
     with open('primes.txt', 'w', encoding='646') as w:
-        w.write('\n'.join(map(str, sorted(set(p)))))
+        w.write('\n'.join(map(str, P)))
