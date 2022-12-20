@@ -35,24 +35,21 @@ if __name__ == '__main__':
     print(p[-1])
     import threading
     thrs = list()
-    import time
-    t0=time.time()
     try:
-        for i in range(10):
+        for i in range(5):
             t=threading.Thread(target=papp)
             t.start()
             thrs.append(t)
         while True:
             for t in thrs:
-                t1=time.time()
                 if t.is_alive():
                     continue
                 else:
                     t.join()
-                # TODO
-                t=threading.Thread(target=papp)
-                t.start()
+                    t=threading.Thread(target=papp)
+                    t.start()
     except KeyboardInterrupt:
+        print("KeyboardInterrupt")
         for t in thrs:
             t.join()
     P=sorted(set(p))
