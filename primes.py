@@ -36,18 +36,17 @@ if __name__ == '__main__':
     import threading
     thrs = list()
     try:
-        for i in range(5):
-            t=threading.Thread(target=papp)
+        for i in range(8):
+            t=threading.Thread(target=papp,daemon=True)
             t.start()
             thrs.append(t)
         while True:
             for t in thrs:
                 if t.is_alive():
                     continue
-                else:
-                    t.join()
-                    t=threading.Thread(target=papp)
-                    t.start()
+                t.join()
+                t=threading.Thread(target=papp)
+                t.start()
     except KeyboardInterrupt:
         print("KeyboardInterrupt")
         for t in thrs:
