@@ -47,7 +47,6 @@ if __name__ == '__main__':
                 if t.is_alive():
                     continue
                 t.join()
-                # print(f'Thr {t.ident}: {p[-1]}')
                 if time.time()-t0>=1:
                     print(p[-1])
                     t0=time.time()
