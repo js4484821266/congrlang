@@ -38,7 +38,7 @@ if __name__ == '__main__':
     thrs = []
     t0 = time.time()
     try:
-        for i in range(32):
+        for i in range(16):
             t = threading.Thread(target=papp)
             t.start()
             print(f'Thr {t.ident} started.')
