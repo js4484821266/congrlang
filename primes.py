@@ -35,12 +35,13 @@ if __name__ == '__main__':
     print(p[-1])
     import time
     import threading
-    thrs = list()
+    thrs = []
     t0=time.time()
     try:
         for i in range(10):
             t = threading.Thread(target=papp)
             t.start()
+            print(f'Thr {t.ident} started.')
             thrs.append(t)
         while True:
             for t in thrs:
