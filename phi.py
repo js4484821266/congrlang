@@ -4,12 +4,12 @@ Euler's totient function.
 import primes
 
 q = []
-with open('phi.txt', 'r', encoding='646') as f:
-    q = list(map(int, f.read().split()))
+with open('phi.txt', 'r', encoding='646') as r:
+    q = list(map(int, r.read().split()))
     q = dict(enumerate(q))
 
 
-def phii(xxxx: int) -> int:
+def phii(xxxx: int=len(q)) -> int:
     '''
     Euler's totient function.
     '''
@@ -28,7 +28,7 @@ def phii(xxxx: int) -> int:
     return phab
 
 
-def qipi(indx: int) -> None:
+def qipi(indx: int=len(q)) -> None:
     '''
     appends a key-value pair to q.
     '''
@@ -36,32 +36,36 @@ def qipi(indx: int) -> None:
 
 
 if __name__ == '__main__':
-    i = len(q)
-    print(i)
+    print(len(q))
     import time
+    import threading
+    thrs=[]
     t0 = time.time()
     try:
-        while primes.p[-1] > i:
-            t = []
-            k = i
-            for j in primes.p:
-                t.append(0)
-                while not k % j:
-                    t[-1] += 1
-                    k //= j
-                if k == 1:
-                    break
-            u = 1
-            for pj, tj in zip(primes.p, t):
-                v = pj**tj
-                u *= v-v//pj
-            f.write(f'\n{u}')
-            t1 = time.time()
-            if t1-t0 >= 1:
-                print(i)
-                t0 = t1
+        for i in range(10):
+            t=threading.Thread(target=qipi)
+            t.start()
+            thrs.append(t)
+        while True:
+            for t in thrs:
+                if t.is_alive():
+                    continue
+                t.join()
+                if time.time()-t0>=1:
+                    print(len(q))
+                    t0=time.time()
+                t = threading.Thread(target=qipi)
+                t.start()
     except KeyboardInterrupt:
-        print(i)
-    with open('phi.txt', 'a', encoding='646') as f:
-        pass
-    # TODO
+        print("KeyboardInterrupt")
+        for t in thrs:
+            print(f'Thr {t.ident} ', end='')
+            t.join()
+            print('disconnected.')
+    print(len(q))
+    with open('phi.txt', 'w', encoding='646') as w:
+        i = q.items()
+        i = sorted(i, key=lambda x: x[0])
+        i = map(lambda x: str(x[1]), i)
+        i = list(i)
+        w.write('\n'.join(i))
