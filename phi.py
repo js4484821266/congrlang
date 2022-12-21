@@ -45,6 +45,7 @@ if __name__ == '__main__':
         for i in range(10):
             t=threading.Thread(target=qipi)
             t.start()
+            print(f'Thr {t.ident} started.')
             thrs.append(t)
         while True:
             for t in thrs:
