@@ -4,7 +4,7 @@ Factorization.
 import primes
 
 
-def ftrz(intn: int) -> dict[int, int]:
+def ftrz(intn: int) -> set[tuple[int, int]]:
     '''
     Factorization.
     '''
@@ -13,18 +13,18 @@ def ftrz(intn: int) -> dict[int, int]:
             "argument greater than"
             + "the greatest registered prime"
         )
-    pwfc = dict()
+    pwfc = set()
     for pppp in primes.p:
-        pwfc[pppp] = 0
+        tttt = {pppp: 0}
         while not intn % pppp:
             intn //= pppp
-            pwfc[pppp] += 1
-        if not pwfc[pppp]:
-            del pwfc[pppp]
+            tttt[pppp] += 1
+        if tttt[pppp]:
+            pwfc.update(tttt.items())
         if intn == 1:
             break
     return pwfc
 
 
 if __name__ == '__main__':
-    print(ftrz(2*3*5*7*9*11*17))
+    print(ftrz(2*3*5*7*11*13*17*19*23))
