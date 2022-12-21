@@ -21,10 +21,11 @@ def phii(xxxx: int = len(q)) -> int:
     return phab
 
 
-def qipi(indx: int = len(q)) -> None:
+def qipi() -> None:
     '''
     appends a key-value pair to q.
     '''
+    indx = len(q)
     q[indx] = phii(indx)
 
 
