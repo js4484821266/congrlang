@@ -35,7 +35,7 @@ if __name__ == '__main__':
     thrs = []
     t0 = time.time()
     try:
-        for i in range(10):
+        for i in range(32):
             t = threading.Thread(target=qipi)
             t.start()
             print(f'Thr {t.ident} started.')
