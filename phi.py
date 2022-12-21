@@ -1,7 +1,7 @@
 '''
 Euler's totient function.
 '''
-import primes
+import primefactorizer
 
 q = []
 with open('phi.txt', 'r', encoding='646') as r:
@@ -13,16 +13,9 @@ def phii(xxxx: int = len(q)) -> int:
     '''
     Euler's totient function.
     '''
-    pwfc = []
-    for pppp in primes.p:
-        pwfc.append(0)
-        while not xxxx % pppp:
-            pwfc[-1] += 1
-            xxxx //= pppp
-        if xxxx == 1:
-            break
+    pwfc = primefactorizer.ftrz(xxxx)
     phab = 1
-    for ppjj, xfjj in zip(primes.p, pwfc):
+    for ppjj, xfjj in pwfc.items():
         phpe = ppjj**xfjj
         phab *= phpe-phpe//ppjj
     return phab
