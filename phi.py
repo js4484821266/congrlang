@@ -9,7 +9,7 @@ with open('phi.txt', 'r', encoding='646') as r:
     q = dict(enumerate(q))
 
 
-def phii(xxxx: int=len(q)) -> int:
+def phii(xxxx: int = len(q)) -> int:
     '''
     Euler's totient function.
     '''
@@ -28,7 +28,7 @@ def phii(xxxx: int=len(q)) -> int:
     return phab
 
 
-def qipi(indx: int=len(q)) -> None:
+def qipi(indx: int = len(q)) -> None:
     '''
     appends a key-value pair to q.
     '''
@@ -39,11 +39,11 @@ if __name__ == '__main__':
     print(len(q))
     import time
     import threading
-    thrs=[]
+    thrs = []
     t0 = time.time()
     try:
         for i in range(10):
-            t=threading.Thread(target=qipi)
+            t = threading.Thread(target=qipi)
             t.start()
             print(f'Thr {t.ident} started.')
             thrs.append(t)
@@ -52,9 +52,9 @@ if __name__ == '__main__':
                 if t.is_alive():
                     continue
                 t.join()
-                if time.time()-t0>=1:
+                if time.time()-t0 >= 1:
                     print(len(q))
-                    t0=time.time()
+                    t0 = time.time()
                 t = threading.Thread(target=qipi)
                 t.start()
     except KeyboardInterrupt:
