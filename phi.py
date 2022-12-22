@@ -5,7 +5,7 @@ import primefactorizer
 
 q = []
 with open('phi.txt', 'r', encoding='646') as r:
-    q = set(enumerate(map(int, r.read().split())))
+    q = list(enumerate(map(int, r.read().split())))
 
 
 def phii(xxxx: int) -> int:
@@ -24,12 +24,12 @@ def qadd() -> None:
     '''
     appends a key-value pair to q.
     '''
-    lenq = len(q)
-    q.add((lenq,phii(lenq)))
+    qlas = q[-1][0]+1
+    q.append((qlas, phii(qlas)))
 
 
 if __name__ == '__main__':
-    print(len(q))
+    print(q[-1])
     import time
     import threading
     thrs = []
@@ -46,7 +46,7 @@ if __name__ == '__main__':
                     continue
                 t.join()
                 if time.time()-t0 >= 1:
-                    print(len(q))
+                    print(q[-1])
                     t0 = time.time()
                 t = threading.Thread(target=qadd)
                 t.start()
@@ -56,9 +56,9 @@ if __name__ == '__main__':
             print(f'Thr {t.ident} ', end='')
             t.join()
             print('disconnected.')
-    print(len(q))
+    print(q[-1])
     with open('phi.txt', 'w', encoding='646') as w:
-        i = sorted(q, key=lambda x: x[0])
+        i = sorted(set(q), key=lambda x: x[0])
         i = map(lambda x: str(x[1]), i)
         i = list(i)
         w.write('\n'.join(i))
