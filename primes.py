@@ -27,8 +27,7 @@ def papp() -> None:
     prim = nxpr()
     if prim in p:
         return
-    else:
-        p.append(prim)
+    p.append(prim)
 
 
 if __name__ == '__main__':
