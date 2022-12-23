@@ -11,14 +11,14 @@
     <py-config>
         [[fetch]]
         files=[
-            'primes.txt',
-            'primes.py',
-            'primefactorizer.py',
-            'phi.txt',
-            'phi.py',
-            'nnnn.py',
-            'infl.py',
-            'sntn.py'
+        'primes.txt',
+        'primes.py',
+        'primefactorizer.py',
+        'phi.txt',
+        'phi.py',
+        'nnnn.py',
+        'infl.py',
+        'sntn.py'
         ]
     </py-config>
 </head>
@@ -26,28 +26,37 @@
 <body style="background-color: #eee;text-align: center;">
     <div class="container">
         <div class="col-lg-4 mx-auto">
-            <h1>CongrLang</h1>
-            Congruence Language (or "CongrLang" for short)
-            is a constructed language where all words and
-            inflections are natural numbers and the morphology
-            is based on modulo arithmetic.
-            The inflections may be rendered as sequences of
-            readable syllables by versions.
-            <h2>Concept</h2>
-            This constructed language is based on the idea of
-            a language where the morphology is so complex that
-            it is considered completely irregular.
-            <h2>Morphology</h2>
-            The inflection of a word is the least natural
-            number congruent to the power of the primitive
-            form of the word. The methodology accords with
-            the specific expression.
-            <h2>Syntax</h2>
-            The syntax implements the Chinese Remainder Theorem.
-            Each item is assigned a moderately big prime,
-            and then merge the items into a product, supposing
-            that it remains each inflection when divided by the
-            product of all the primes.
+            <div>
+                <h1>CongrLang</h1>
+            </div>
+            <div>
+                Congruence Language (or "CongrLang" for short)
+                is a constructed language where all words and
+                inflections are natural numbers and the morphology
+                is based on modulo arithmetic.
+                The inflections may be rendered as sequences of
+                readable syllables by versions.</div>
+            <div>
+                <h2>Concept</h2>
+                This constructed language is based on the idea of
+                a language where the morphology is so complex that
+                it is considered completely irregular.
+            </div>
+            <div>
+                <h2>Morphology</h2>
+                The inflection of a word is the least natural
+                number congruent to the power of the primitive
+                form of the word. The methodology accords with
+                the specific expression.
+            </div>
+            <div>
+                <h2>Syntax</h2>
+                The syntax implements the Chinese Remainder Theorem.
+                Each item is assigned a moderately big prime,
+                and then merge the items into a product, supposing
+                that it remains each inflection when divided by the
+                product of all the primes.
+            </div>
         </div>
         <div>
             <label id="prime4"></label>
@@ -55,6 +64,11 @@
                 import pyscript,primes
                 Element('prime4').write(primes.p[4])
             </py-script>
+        </div>
+        <div>
+            <a href="https://github.com/js4484821266">
+                Yezu Yi
+            </a>
         </div>
     </div>
 </body>
