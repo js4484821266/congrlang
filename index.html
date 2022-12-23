@@ -44,12 +44,16 @@
             the specific expression.
             <h2>Syntax</h2>
             The syntax implements the Chinese Remainder Theorem.
-            Each item is assigned a moderately big prime.
+            Each item is assigned a moderately big prime,
+            and then merge the items into a product, supposing
+            that it remains each inflection when divided by the
+            product of all the primes.
         </div>
         <div>
+            <label id="prime4"></label>
             <py-script>
-                import primes
-                print(primes.p[4])
+                import pyscript,primes
+                Element('prime4').innerHtml=primes.p[4]
             </py-script>
         </div>
     </div>
