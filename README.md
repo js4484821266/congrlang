@@ -12,4 +12,4 @@ where
 * `b` denotes the inflection the word has.
 * `p` represents the designated substantial prime number.
 ## Syntax
-The syntax implements the Chinese Remainder Theorem.
+The syntax implements the Chinese Remainder Theorem. Each item is assigned a moderately big prime, and then merge the items into a product, supposing that it remains each inflection when divided by the product of all the primes.
