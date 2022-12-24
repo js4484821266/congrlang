@@ -66,7 +66,8 @@
             </py-script>
         </div>
         <div>
-            <a href="https://github.com/js4484821266">
+            <?=date("Y")?>
+            <a href="https://js4484821266.github.io/">
                 Yezu Yi
             </a>
         </div>
