@@ -52,9 +52,11 @@
             <div style="background-color:lightgreen;">
                 <py-script>
                     import infl
-                    def inflinfl(aaaa,bbbb,NNNN=2147483647):
-                      apbn=Element('apbn')
-                      apbn.element.innerText=infl.infl(aaaa,bbbb,NNNN)
+                    def inflinfl():
+                        aaaa=int(Element('aaaa').element.innerText)
+                        bbbb=int(Element('bbbb').element.innerText)
+                        apbn=Element('apbn')
+                        apbn.element.innerText=infl.infl(aaaa,bbbb,2147483647)
                 </py-script>
                 <table style="margin: auto;">
                     <tr>
@@ -78,7 +80,7 @@
                             <input type="number" id="bbbb">
                         </td>
                         <td>
-                            <button type="submit" id="go" py-click="infl.infl()">
+                            <button type="submit" id="go" py-click="inflinfl()">
                                 Go
                             </button>
                         </td>
