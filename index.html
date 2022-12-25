@@ -55,8 +55,7 @@
                     def inflinfl():
                         aaaa=int(Element('aaaa').element.innerText)
                         bbbb=int(Element('bbbb').element.innerText)
-                        apbn=Element('apbn')
-                        apbn.element.innerText=infl.infl(aaaa,bbbb,2147483647)
+                        pyscript.write('apbn',infl.infl(aaaa,bbbb,2147483647))
                 </py-script>
                 <table style="margin: auto;">
                     <tr>
@@ -80,7 +79,7 @@
                             <input type="number" id="bbbb">
                         </td>
                         <td>
-                            <button type="submit" id="go" py-click="inflinfl()">
+                            <button type="submit" id="go" pys-onClick="inflinfl">
                                 Go
                             </button>
                         </td>
