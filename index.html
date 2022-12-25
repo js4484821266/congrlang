@@ -75,8 +75,8 @@
                             <py-script>
                                 import infl
                                 def inflinfl():
-                                    aaaa=int(Element('aaaa').element.innerText)
-                                    bbbb=int(Element('bbbb').element.innerText)
+                                    aaaa=int(Element('aaaa').element.value)
+                                    bbbb=int(Element('bbbb').element.value)
                                     pyscript.write('apbn',infl.infl(aaaa,bbbb,2147483647))
                             </py-script>
                             <button type="submit" id="go" py-click="inflinfl()">
