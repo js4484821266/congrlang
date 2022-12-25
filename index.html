@@ -49,47 +49,47 @@
                 form of the word. The methodology accords with
                 the specific expression.
             </div>
-            <py-script>
-                import infl
-                def inflinfl(aaaa,bbbb,NNNN=2147483647):
-                    apbn=Element('apbn')
-                    apbn.element.innerText=infl.infl(aaaa,bbbb,NNNN)
-            </py-script>
             <div style="background-color:lightgreen;">
-            <table>
-                <tr>
-                    <th colspan="3">
-                        Inflection calculator (N=2147483647)
-                    </th>
-                </tr>
-                <tr>
-                    <th>
-                        Word
-                    </th>
-                    <td>
-                        <input type="number" id="aaaa">
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        Exponent
-                    </th>
-                    <td>
-                        <input type="number" id="bbbb">
-                    </td>
-                    <td>
-                        <button type="submit" py-click="infl.infl()">
-                            Go
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        Result
-                    </th>
-                    <td id="apbn"></td>
-                </tr>
-            </table>
+                <py-script>
+                    import infl
+                    def inflinfl(aaaa,bbbb,NNNN=2147483647):
+                      apbn=Element('apbn')
+                      apbn.element.innerText=infl.infl(aaaa,bbbb,NNNN)
+                </py-script>
+                <table style="margin: auto;">
+                    <tr>
+                        <th colspan="3">
+                            Inflection calculator (N=2147483647)
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            Word
+                        </th>
+                        <td>
+                            <input type="number" id="aaaa">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Exponent
+                        </th>
+                        <td>
+                            <input type="number" id="bbbb">
+                        </td>
+                        <td>
+                            <button type="submit" py-click="infl.infl()">
+                                Go
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Result
+                        </th>
+                        <td id="apbn" style="background-color: yellow;color: red;"></td>
+                    </tr>
+                </table>
             </div>
             <div>
                 <h2>Syntax</h2>
