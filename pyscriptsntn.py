@@ -10,10 +10,11 @@ def sntn():
     mmmm = 1
     for id in idid[1::2]:
         mmmm *= dddd[id]
+    print(dddd)
     for id, ab in zip(idid[1::2], idid[::2]):
         n = mmmm//dddd[id] % dddd[id]
         s = 1
         while n*s % dddd[id] != 1:
             s += 1
         xxxx += dddd[ab]*n*s
-    Element('sntn').write(xxxx)
+    Element('sntn').write(f'{xxxx}, {mmmm}')
