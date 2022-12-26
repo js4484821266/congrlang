@@ -2,14 +2,23 @@
 primes
 '''
 p = []
-with open('primes.txt', 'r', encoding='646') as r:
-    p = list(map(int, r.read().split()))
+
+
+def defp():
+    '''
+    Generates p.
+    '''
+    global p
+    if not p:
+        with open('primes.txt', 'r', encoding='646') as r:
+            p = list(map(int, r.read().split()))
 
 
 def nxpr():
     '''
     the next prime?
     '''
+    defp()
     inon = p[-1]
     while True:
         inon += 2
@@ -24,6 +33,7 @@ def papp() -> None:
     '''
     appends nxpr to p.
     '''
+    defp()
     prim = nxpr()
     if prim in p:
         return
@@ -31,6 +41,7 @@ def papp() -> None:
 
 
 if __name__ == '__main__':
+    defp()
     print(p[-1])
     import time
     import threading

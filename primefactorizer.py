@@ -8,6 +8,7 @@ def ftrz(intn: int) -> set[tuple[int, int]]:
     '''
     Factorization.
     '''
+    primes.defp()
     if intn > primes.p[-1]**2:
         raise ValueError(
             "argument greater than"
