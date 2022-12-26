@@ -5,8 +5,8 @@ def sntn():
     xxxx = 0
     dddd = dict()
     idid = ['vbab', 'vbnn', 'erab', 'ernn', 'abab', 'abnn']
-    for i in idid:
-        dddd[i] = int(Element(i).value)
+    for id in idid:
+        dddd[id] = int(Element(id).value)
     mmmm = 1
     for id in idid[1::2]:
         mmmm *= dddd[id]
