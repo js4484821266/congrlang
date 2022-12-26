@@ -72,13 +72,7 @@
                             <input type="number" id="bbbb">
                         </td>
                         <td>
-                            <py-script>
-                                from infl import infl
-                                def inflinfl():
-                                    aaaa=int(Element('aaaa').element.value)
-                                    bbbb=int(Element('bbbb').element.value)
-                                    Element('apbn').write(infl(aaaa,bbbb,2147483647))
-                            </py-script>
+                            <py-script src="pyscriptinfl.py"></py-script>
                             <button type="submit" id="go" py-click="inflinfl()">
                                 Go
                             </button>
@@ -99,6 +93,60 @@
                 and then merge the items into a product, supposing
                 that it remains each inflection when divided by the
                 product of all the primes.
+            </div>
+            <div style="background-color:lightskyblue;">
+                <table style="margin: auto;">
+                    <tr>
+                        <th colspan="4">
+                            Sentence calculator
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            Verb
+                        </th>
+                        <td>
+                            <input type="number" id="vbab">
+                        </td>
+                        <td>
+                            <input type="number" id="vbnn">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Ergative
+                        </th>
+                        <td>
+                            <input type="number" id="erab">
+                        </td>
+                        <td>
+                            <input type="number" id="ernn">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Absolutive
+                        </th>
+                        <td>
+                            <input type="number" id="abab">
+                        </td>
+                        <td>
+                            <input type="number" id="abnn">
+                        </td>
+                        <td>
+                            <py-script src="pyscriptsntn.py"></py-script>
+                            <button type="submit" id="go" py-click="sntn()">
+                                Go
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Result
+                        </th>
+                        <td id="sntn" colspan="2" style="background-color: yellow;color: red;"></td>
+                    </tr>
+                </table>
             </div>
         </div>
         <div>
