@@ -4,8 +4,16 @@ Euler's totient function.
 import primefactorizer
 
 q = []
-with open('phi.txt', 'r', encoding='646') as r:
-    q = list(enumerate(map(int, r.read().split())))
+
+
+def defq():
+    '''
+    Generates q.
+    '''
+    global q
+    if not q:
+        with open('phi.txt', 'r', encoding='646') as r:
+            q = list(enumerate(map(int, r.read().split())))
 
 
 def phii(xxxx: int) -> int:
@@ -24,11 +32,13 @@ def qadd() -> None:
     '''
     appends a key-value pair to q.
     '''
+    defq()
     qlas = q[-1][0]+1
     q.append((qlas, phii(qlas)))
 
 
 if __name__ == '__main__':
+    defq()
     print(q[-1])
     import time
     import threading
