@@ -6,7 +6,7 @@ def sntn():
     dddd = dict()
     idid = ['vbab', 'vbnn', 'erab', 'ernn', 'abab', 'abnn']
     for i in idid:
-        dddd[i] = int(Element(i).element.value)
+        dddd[i] = int(Element(i).value)
     mmmm = 1
     for id in idid[1::2]:
         mmmm *= dddd[id]
