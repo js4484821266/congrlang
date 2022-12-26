@@ -15,5 +15,5 @@ def sntn():
         s = 1
         while n*s % dddd[id] != 1:
             s += 1
-        xxxx += ab*n*s
+        xxxx += dddd[ab]*n*s
     Element('sntn').write(xxxx)
