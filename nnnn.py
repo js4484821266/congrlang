@@ -1,11 +1,8 @@
 '''
 Designates N.
 '''
-import phi
-N = 0
+N = 2147483647  # 0
 R = 9
-for i, j in phi.q:
-    # TODO
-    pass
+# phi.defq()
 if __name__ == '__main__':
     print(N, R)
